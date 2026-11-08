@@ -1,0 +1,11 @@
+# The demo needs only numpy and Pillow. The rest is for the detectors and the
+# research scripts; versions are the ones the project ran with where it matters.
+numpy>=2
+pillow
+opencv-python
+matplotlib
+torch                 # CUDA build recommended
+transformers>=5       # SAM 3, Grounding DINO, SAM 2.1
+ultralytics           # YOLO11, YOLO-World v2, the PPE model
+# Fast path only, NVIDIA GPU: see scripts/dart/requirements.txt for the pin
+# tensorrt-cu12

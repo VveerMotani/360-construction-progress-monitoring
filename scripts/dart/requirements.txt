@@ -1,0 +1,49 @@
+# The isolated build environment for DART (.tools/dart-venv). Python 3.12.
+#
+# Why its own venv, and not the API's: DART pins numpy<2 and was written
+# against Meta's own SAM 3 checkpoint loader, both of which the API neither
+# needs nor wants. Only two things cross from here into the main venv --
+# the tensorrt runtime (same pin, below) and the files under data/dart/.
+# See the README (TensorRT section).
+#
+# torch is installed separately by build_dart_engines.ps1 from the cu126
+# index (torch==2.7.1, torchvision==0.22.1): DART was tested on 2.7 and its
+# encoder-decoder export relies on the TorchScript ONNX exporter, which
+# stopped being the default in torch 2.9.
+#
+# TensorRT wheels for 10.x are served from https://pypi.nvidia.com, not PyPI.
+# The version here is THE pin: an engine only loads in the TensorRT version
+# that built it, so the main venv carries exactly the same one.
+tensorrt-cu12==10.16.1.11
+
+numpy<2
+transformers==5.15.0          # same as the API venv, so the HF backbone export matches what the eager provider runs
+huggingface_hub
+safetensors
+setuptools                    # DART's model_builder imports pkg_resources
+iopath
+timm
+einops
+ftfy==6.1.1
+regex
+pillow
+tqdm
+psutil
+typing_extensions
+onnx>=1.20.1
+onnxscript
+onnxslim
+opencv-python
+# Imported at MODULE level by Meta's model loader chain (model_builder ->
+# sam1_task_predictor -> tracker -> the training data code), though nothing
+# here trains, reads video or runs a Triton kernel. Absent, the import
+# fails before a single weight is read. triton-windows is the build DART
+# lists for Windows; 3.3.x pairs with torch 2.7.
+triton-windows<3.4
+decord
+scipy
+pycocotools
+hydra-core
+omegaconf
+numba
+submitit

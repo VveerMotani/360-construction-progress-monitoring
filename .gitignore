@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+.tools/
+.cache/
+data/
+third_party/
+views/
+*.engine
+*.onnx
