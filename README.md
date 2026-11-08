@@ -12,8 +12,8 @@ filter on redness draws thin candidate lines instead (3), and a
 vision-language model labels each one (4): green pipe, magenta paint, blue
 cable.*
 
-B.Tech project, Civil Engineering, IIT Bombay (2026), done with an industry
-partner. Solo work.
+B.Tech project, Civil Engineering, IIT Bombay (2026), supervised by
+Prof. Varun Kumar Reja and done with an industry partner. Solo work.
 
 ## The problem
 
@@ -252,3 +252,8 @@ SAM 3 and SAM 2.1 (Meta), DART (Turkcan 2026), Grounding DINO, Ultralytics
 YOLO11 and YOLO-World, Depth Anything V2, CLIP, Qwen3-VL and Claude Haiku.
 The panorama in the views figure is from [Poly Haven](https://polyhaven.com)
 (CC0).
+
+## Licence
+
+Code: [MIT](LICENSE). Model weights keep their own licences (SAM 3 is under
+Meta's SAM licence).
